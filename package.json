@@ -5,8 +5,13 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "prebuild": "rm -rf build && curl 'https://raw.githubusercontent.com/javimogan/vehicle-logos-dataset/main/logos/logos.json' > src/logos.json",
+    "download-logos": "curl 'https://raw.githubusercontent.com/javimogan/vehicle-logos-dataset/main/logos/logos.json' > src/logos.json",
+    "download-type": "curl https://raw.githubusercontent.com/javimogan/vehicle-logos-dataset/main/src/types.d.ts > src/types/brand.ts",
+    "download-all": "npm run download-logos && npm run download-type",
+    "clear": "rm -rf build",
+    "prebuild": "npm run clear && npm run download-all",
     "build": "npx tsc -p .",
+    "run": "npm run build && node build/index.js",
     "test": "node ./node_modules/mocha/bin/mocha"
   },
   "publishConfig": {
@@ -25,6 +30,10 @@
   "homepage": "https://github.com/javimogan/vehicle-info#readme",
   "dependencies": {
     "mocha": "^10.2.0",
+    "string-similarity": "^4.0.4",
     "typescript": "5.0.2"
+  },
+  "devDependencies": {
+    "@types/string-similarity": "^4.0.0"
   }
 }

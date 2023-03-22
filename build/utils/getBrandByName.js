@@ -1,35 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getBrandByName = void 0;
+exports.getBrandByName = exports.autoCompleteBrand = void 0;
 const brands_1 = require("../brands");
+const string_similarity_1 = require("string-similarity");
+const SEARCH_ITEMS = brands_1.BRANDS.map(brand => brand.slug);
+function autoCompleteBrand(search) {
+    const bestMatch = (0, string_similarity_1.findBestMatch)(search, SEARCH_ITEMS).bestMatch;
+    return bestMatch.rating > 0.65 ? bestMatch : null;
+}
+exports.autoCompleteBrand = autoCompleteBrand;
 function getBrandByName(name, model) {
+    var _a;
     if (!name)
         return null;
-    let imageIndex = -1;
-    let coincidencia = 999999999;
     if (model === undefined)
         model = "";
-    [name + " " + model, name].forEach((_text) => {
-        _text = _text.normalize("NFD").replace(/[-]/g, " ").replace(/[\u0300\u036f]/g, "").toLowerCase().trim();
-        if (imageIndex > -1)
-            return;
-        brands_1.BRANDS.forEach((item, i) => {
-            let _match = item.name.toLowerCase().trim().match(_text);
-            if (!_match)
-                _match = _text.match(item.name.toLowerCase().trim());
-            if (_match) {
-                if (_match.index !== undefined && _match.index < coincidencia) {
-                    imageIndex = i;
-                    coincidencia = _match.index;
-                }
-            }
-        });
-    });
-    if (imageIndex > -1) {
-        return brands_1.BRANDS[imageIndex];
-    }
-    else {
-        return null;
-    }
+    let bestMatch = autoCompleteBrand((name + " " + model).normalize("NFD").replace(/[-]/g, " ").replace(/[\u0300\u036f]/g, "").toLowerCase().trim());
+    if (!bestMatch)
+        bestMatch = autoCompleteBrand(name.normalize("NFD").replace(/[-]/g, " ").replace(/[\u0300\u036f]/g, "").toLowerCase().trim());
+    return (_a = brands_1.BRANDS.find(brand => brand.slug === (bestMatch === null || bestMatch === void 0 ? void 0 : bestMatch.target))) !== null && _a !== void 0 ? _a : null;
 }
 exports.getBrandByName = getBrandByName;
