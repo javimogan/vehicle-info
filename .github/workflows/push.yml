@@ -16,7 +16,7 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@javimogan'
       - run: npm install
-      - run: npm run build
+      - run: npm build
       - run: npm test
       - run: npm publish
         env:
