@@ -7,6 +7,7 @@
   "files":[
     "build/**/*"
   ],
+  
   "scripts": {
     "download-logos": "curl 'https://raw.githubusercontent.com/javimogan/vehicle-logos-dataset/main/logos/logos.json' > src/logos.json",
     "download-type": "curl https://raw.githubusercontent.com/javimogan/vehicle-logos-dataset/main/src/types.d.ts > src/types/brand.ts",
