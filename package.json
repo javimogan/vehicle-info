@@ -1,0 +1,30 @@
+{
+  "name": "@javimogan/vehicle-info",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "prebuild": "rm -rf build && curl 'https://raw.githubusercontent.com/javimogan/vehicle-logos-dataset/main/logos/logos.json' > src/logos.json",
+    "build": "npx tsc -p .",
+    "test": "node ./node_modules/mocha/bin/mocha"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javimogan/vehicle-info.git"
+  },
+  "keywords": [],
+  "author": "javimogan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javimogan/vehicle-info/issues"
+  },
+  "homepage": "https://github.com/javimogan/vehicle-info#readme",
+  "dependencies": {
+    "mocha": "^10.2.0",
+    "typescript": "5.0.2"
+  }
+}
