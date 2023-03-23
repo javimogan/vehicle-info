@@ -4,10 +4,9 @@
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "files":[
+  "files": [
     "build/**/*"
   ],
-  
   "scripts": {
     "download-logos": "curl 'https://raw.githubusercontent.com/javimogan/vehicle-logos-dataset/main/logos/logos.json' > src/logos.json",
     "download-type": "curl https://raw.githubusercontent.com/javimogan/vehicle-logos-dataset/main/src/types.d.ts > src/types/brand.ts",
@@ -34,6 +33,7 @@
   "homepage": "https://github.com/javimogan/vehicle-info#readme",
   "dependencies": {
     "mocha": "^10.2.0",
+    "moment": "^2.29.4",
     "string-similarity": "^4.0.4",
     "typescript": "5.0.2"
   },
