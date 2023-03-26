@@ -1,4 +1,3 @@
-import { BestMatch } from 'string-similarity';
 import { BRANDS } from './brands';
 import { EDefaultTypes, IBrand } from './types/brand';
 import { getBrandByName as _getBrandByName } from './utils/getBrandByName';
