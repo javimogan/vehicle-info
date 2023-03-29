@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.autoCompleteBrand = exports.listAllBrands = exports.getBrandByName = void 0;
+exports.brands = exports.getBrandByName = void 0;
 const brands_1 = require("./brands");
 const brand_1 = require("./types/brand");
 const getBrandByName_1 = require("./utils/getBrandByName");
@@ -13,12 +13,4 @@ function getBrandByName(name, model = "", type = brand_1.EDefaultTypes.CAR, year
     return (_b = (_a = (0, getBrandByName_1.getBrandByName)(name, model)) !== null && _a !== void 0 ? _a : brands_1.BRANDS.find(brand => brand.slug === `default-${type}`)) !== null && _b !== void 0 ? _b : null;
 }
 exports.getBrandByName = getBrandByName;
-function listAllBrands() {
-    return brands_1.BRANDS;
-}
-exports.listAllBrands = listAllBrands;
-function autoCompleteBrand(search) {
-    return autoCompleteBrand(search);
-}
-exports.autoCompleteBrand = autoCompleteBrand;
-getBrandByName("Fiat", "Punto", brand_1.EDefaultTypes.CAR, undefined);
+exports.brands = brands_1.BRANDS;
