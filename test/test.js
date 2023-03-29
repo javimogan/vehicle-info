@@ -3,7 +3,7 @@ const assert = require("assert");
 const { EDefaultTypes } = require('../build/types/brand.js');
 
 //Create a test for the index.js file
-describe('getBrandByName', function() {
+describe('defaults files', ()=>{
     it('default car', function() {
         assert.equal(getBrandByName("imaginary", "brand", EDefaultTypes.CAR).slug, 'default-car');
     });
@@ -19,6 +19,8 @@ describe('getBrandByName', function() {
     it('default truck', function() {
         assert.equal(getBrandByName("imaginary", "brand", EDefaultTypes.TRUCK).slug, 'default-truck');
     });
+})
+describe('getBrandByName', function() {
     it('audi a3', function() {
         assert.equal(getBrandByName("audi", "a3").slug, 'audi');
     });
@@ -33,6 +35,12 @@ describe('getBrandByName', function() {
     });
     it('ford mustang 450CV', function() {
         assert.equal(getBrandByName("ford", "mustang 450CV").slug, 'ford-mustang');
+    });
+    it('mercedes-benz', function() {
+        assert.equal(getBrandByName("mercedes-benz").slug, 'mercedes-benz');
+    });
+    it('mercedes benz', function() {
+        assert.equal(getBrandByName("mercedes", "benz").slug, 'mercedes-benz');
     });
     }
 );
