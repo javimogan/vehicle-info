@@ -7,7 +7,6 @@ const SEARCH_ITEMS = BRANDS.map(brand=>brand.slug);
 export function autoCompleteBrand(search: string): BestMatch{
   return findBestMatch(search,SEARCH_ITEMS)
 }
-
 export function bestMatchBrand(search: string){
   const bestMatch = findBestMatch(search,SEARCH_ITEMS).bestMatch
   return bestMatch.rating > 0.65 ? bestMatch : null;
