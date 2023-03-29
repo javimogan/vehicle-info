@@ -1,7 +1,6 @@
 const { getBrandByName } = require('../build/index.js');
 const assert = require("assert");
 const { EDefaultTypes } = require('../build/types/brand.js');
-
 //Create a test for the index.js file
 describe('defaults files', ()=>{
     it('default car', function() {
